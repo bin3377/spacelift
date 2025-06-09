@@ -1,6 +1,6 @@
 module "network" {
   source                   = "../../../modules/oci/network"
-  compartment_id           = var.compartment_id
+  compartment_id           = var.compartment_ocid
   prefix                   = "k8s"
   enable_ipv6              = false
   vcn_cidr                 = "10.0.0.0/16"
