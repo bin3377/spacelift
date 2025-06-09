@@ -1,9 +1,9 @@
 output "certificate" {
-  value     = cloudflare_origin_ca_certificate.this.certificate
+  value     = module.origin_cert.certificate
   sensitive = true
 }
 
 output "private_key" {
-  value     = tls_private_key.this.private_key_pem
+  value     = module.origin_cert.private_key
   sensitive = true
 }
