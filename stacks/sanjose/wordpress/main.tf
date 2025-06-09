@@ -43,15 +43,15 @@ provider "helm" {
   }
 }
 
-provider "mysql" {
-  endpoint = var.db_ip
-  username = var.db_username
-  password = var.db_password
-}
+# provider "mysql" {
+#   endpoint = var.db_ip
+#   username = var.db_username
+#   password = var.db_password
+# }
 
-resource "mysql_database" "wordpress" {
-  name = var.database
-}
+# resource "mysql_database" "wordpress" {
+#   name = var.database
+# }
 
 
 module "wordpress" {
@@ -61,7 +61,7 @@ module "wordpress" {
   db_port     = var.db_port
   db_username = var.db_username
   db_password = var.db_password
-  database    = mysql_database.wordpress.name
+  database    = var.database
 
   hostname           = var.hostname
   wordpress_username = var.wordpress_username

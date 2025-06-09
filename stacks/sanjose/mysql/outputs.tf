@@ -13,5 +13,5 @@ output "db_username" {
 
 output "db_password" {
   value     = var.admin_password
-  sensitive = true 
+  sensitive = true
 }
