@@ -44,12 +44,7 @@ variable "db_password" {
   description = "the password for the MySQL DB System."
 }
 
-variable "db_name" {
-  type        = string
-  description = "the name of the database."
-}
-
-variable "db_database" {
+variable "database" {
   type        = string
   description = "the database to use for the wordpress"
   default     = "wordpress"

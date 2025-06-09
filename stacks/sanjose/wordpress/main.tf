@@ -50,7 +50,7 @@ provider "mysql" {
 }
 
 resource "mysql_database" "wordpress" {
-  name = var.db_database
+  name = var.database
 }
 
 
@@ -61,7 +61,7 @@ module "wordpress" {
   db_port     = var.db_port
   db_username = var.db_username
   db_password = var.db_password
-  db_name     = mysql_database.wordpress.name
+  database    = mysql_database.wordpress.name
 
   hostname           = var.hostname
   wordpress_username = var.wordpress_username

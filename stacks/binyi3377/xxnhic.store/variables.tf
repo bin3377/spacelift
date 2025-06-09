@@ -14,8 +14,8 @@ variable "edge_cname" {
   default     = "cloudflare.182682.xyz"
 }
 
-variable "custom_hostname" {
-  type        = string
-  description = "the custom hostname"
+variable "custom_hostnames" {
+  type        = list(string)
+  description = "the custom hostnames"
 }
   

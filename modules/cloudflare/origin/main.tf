@@ -26,8 +26,9 @@ resource "cloudflare_custom_hostname_fallback_origin" "this" {
 }
 
 resource "cloudflare_custom_hostname" "this" {
+  for_each = toset(var.custom_hostnames)
   zone_id  = var.zone_id
-  hostname = var.custom_hostname
+  hostname = each.value
   ssl = {
     type     = "dv"
     method   = "txt"

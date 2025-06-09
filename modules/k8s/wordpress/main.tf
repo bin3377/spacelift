@@ -28,7 +28,7 @@ resource "helm_release" "this" {
 
   set {
     name  = "externalDatabase.database"
-    value = var.db_name
+    value = var.database
   }
 
   set {
