@@ -18,11 +18,6 @@ variable "tenancy_ocid" {
   description = "the tenancy ocid of oci-cli"
 }
 
-variable "compartment_ocid" {
-  type        = string
-  description = "the compartment ocid of oci-cli"
-}
-
 variable "cluster_ocid" {
   type        = string
   description = "the cluster ocid"

@@ -13,16 +13,13 @@ provider "kubernetes" {
 
   exec {
     api_version = local.kubeconfig_user_exec["apiVersion"]
-    args        = concat(
-      local.kubeconfig_user_exec["args"],
-      ["--compartment-id", var.compartment_ocid]
-    )
+    args        = local.kubeconfig_user_exec["args"]
     command     = local.kubeconfig_user_exec["command"]
-    env         = {
-      "OCI_CLI_USER" = var.user_ocid,
+    env = {
+      "OCI_CLI_USER"        = var.user_ocid,
       "OCI_CLI_FINGERPRINT" = var.fingerprint,
-      "OCI_CLI_TENANCY" = var.tenancy_ocid,
-      "OCI_CLI_KEY_FILE" = var.private_key_path,
+      "OCI_CLI_TENANCY"     = var.tenancy_ocid,
+      "OCI_CLI_KEY_FILE"    = var.private_key_path,
     }
   }
 }
@@ -31,4 +28,21 @@ module "nginx_ingress" {
   source      = "../../../modules/k8s/nginx_ingress"
   certificate = var.origin_cert
   private_key = var.origin_private_key
+}
+
+output "args" {
+  value = local.kubeconfig_user_exec["args"]
+}
+
+output "env" {
+  value = {
+    "OCI_CLI_USER"        = var.user_ocid,
+    "OCI_CLI_FINGERPRINT" = var.fingerprint,
+    "OCI_CLI_TENANCY"     = var.tenancy_ocid,
+    "OCI_CLI_KEY_FILE"    = var.private_key_path,
+  }
+}
+
+output "command" {
+  value = local.kubeconfig_user_exec["command"]
 }
