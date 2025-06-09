@@ -18,24 +18,12 @@ provider "kubernetes" {
       ["--compartment-id", var.compartment_ocid]
     )
     command     = local.kubeconfig_user_exec["command"]
-    env         = [
-      {
-        name  = "OCI_CLI_USER"
-        value = var.user_ocid
-      },
-      {
-        name  = "OCI_CLI_FINGERPRINT"
-        value = var.fingerprint
-      },
-      {
-        name  = "OCI_CLI_TENANCY"
-        value = var.tenancy_ocid
-      },
-      {
-        name  = "OCI_CLI_KEY_FILE"
-        value = var.private_key_path
-      }
-    ]
+    env         = {
+      "OCI_CLI_USER" = var.user_ocid,
+      "OCI_CLI_FINGERPRINT" = var.fingerprint,
+      "OCI_CLI_TENANCY" = var.tenancy_ocid,
+      "OCI_CLI_KEY_FILE" = var.private_key_path,
+    }
   }
 }
 
