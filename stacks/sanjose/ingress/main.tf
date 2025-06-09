@@ -48,20 +48,3 @@ module "nginx_ingress" {
   certificate = var.origin_cert
   private_key = var.origin_private_key
 }
-
-output "args" {
-  value = local.kubeconfig_user_exec["args"]
-}
-
-output "env" {
-  value = {
-    "OCI_CLI_USER"        = var.user_ocid,
-    "OCI_CLI_FINGERPRINT" = var.fingerprint,
-    "OCI_CLI_TENANCY"     = var.tenancy_ocid,
-    "OCI_CLI_KEY_FILE"    = var.private_key_path,
-  }
-}
-
-output "command" {
-  value = local.kubeconfig_user_exec["command"]
-}
