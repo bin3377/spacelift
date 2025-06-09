@@ -24,6 +24,25 @@ provider "kubernetes" {
   }
 }
 
+provider "helm" {
+  kubernetes {
+    host                   = local.kubeconfig_cluster["server"]
+    cluster_ca_certificate = base64decode(local.kubeconfig_cluster["certificate-authority-data"])
+
+    exec {
+      api_version = local.kubeconfig_user_exec["apiVersion"]
+      args        = local.kubeconfig_user_exec["args"]
+      command     = local.kubeconfig_user_exec["command"]
+      env = {
+        "OCI_CLI_USER"        = var.user_ocid,
+        "OCI_CLI_FINGERPRINT" = var.fingerprint,
+        "OCI_CLI_TENANCY"     = var.tenancy_ocid,
+        "OCI_CLI_KEY_FILE"    = var.private_key_path,
+      }
+    }
+  }
+}
+
 module "nginx_ingress" {
   source      = "../../../modules/k8s/nginx_ingress"
   certificate = var.origin_cert
