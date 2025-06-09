@@ -38,3 +38,6 @@ resource "oci_containerengine_cluster" "this" {
   }
 }
 
+data "oci_containerengine_cluster_kube_config" "this" {
+  cluster_id = oci_containerengine_cluster.this.id
+}
