@@ -1,0 +1,19 @@
+main:
+  persistence:
+    enabled: true
+    type: dynamic
+    accessModes:
+      - ReadWriteOnce
+    size: 1Gi
+  resources:
+    limits:
+      memory: 2048Mi
+    requests:
+      memory: 512Mi
+ingress:
+  enabled: true
+  className: nginx
+  hosts:
+    - host: "hostname"
+      paths:
+        - /
