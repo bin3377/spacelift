@@ -22,7 +22,7 @@ resource "helm_release" "this" {
   }
 
   set {
-    name  = "ingress.hosts.0.host"
+    name  = "ingress.hosts[0].host"
     value = var.hostname
   }
 }

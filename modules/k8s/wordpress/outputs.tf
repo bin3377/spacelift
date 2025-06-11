@@ -1,3 +1,3 @@
-output "wordpress_url" {
+output "url" {
   value = "https://${var.hostname}/login"
 }
