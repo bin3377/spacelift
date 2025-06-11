@@ -29,9 +29,4 @@ resource "cloudflare_custom_hostname" "this" {
   for_each = toset(var.custom_hostnames)
   zone_id  = var.zone_id
   hostname = each.value
-  ssl = {
-    type     = "dv"
-    method   = "txt"
-    wildcard = false # not available for free plan
-  }
 }
